@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchData(searchTerm = '') {
         try {
             tableBody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
-            let url = 'https://backendcookie-8qc1.onrender.com/api/gdpr-data';
+            let url = 'https://backendcookie-zi2t.onrender.com/api/gdpr-data';
             if (searchTerm) {
-                url = `https://backendcookie-8qc1.onrender.com/api/gdpr-data/${searchTerm}`;
+                url = `https://backendcookie-zi2t.onrender.com/api/gdpr-data/${searchTerm}`;
             }
             const response = await fetch(url, { method: 'GET' });
             if (!response.ok) {
