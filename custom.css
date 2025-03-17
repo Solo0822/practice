@@ -1,0 +1,28 @@
+.sidebar {
+    height: 100vh;
+    border-right: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa;
+}
