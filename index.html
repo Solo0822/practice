@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDPR Compliance Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/custom.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-dark sticky-top bg-dark p-0 shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">GDPR Admin</a>
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="ms-auto px-3">
+                <button class="btn btn-outline-light btn-sm" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <h4 class="text-center text-muted">GDPR Dashboard</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">
+                                <i class="fas fa-cookie-bite me-2"></i> Cookie Tracking
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-chart-bar me-2"></i> Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cog me-2"></i> Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Cookie Tracking Information</h1>
+                    <button class="btn btn-primary btn-sm" id="refreshBtn">
+                        <i class="fas fa-sync-alt me-1"></i> Refresh
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search by Consent ID or IP..." aria-label="Search GDPR data">
+                </div>
+
+                <!-- Data Table -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th data-bs-toggle="tooltip" data-bs-placement="top" title="Unique identifier for consent">Consent ID</th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="top" title="User's IP address">IP Address</th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="top" title="Creation and update timestamps">Timestamp</th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="top" title="Cookie consent preferences">Cookie Preferences</th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="top" title="View or delete entry">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cookieTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="./scripts/dashboard.js"></script>
+    <!-- Enable tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            [...tooltipTriggerList].forEach(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+            
+            // Placeholder for logout (implement as needed)
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                alert('Logout functionality not implemented.');
+            });
+
+            // Refresh button handler (assuming fetchData is defined in dashboard.js)
+            document.getElementById('refreshBtn').addEventListener('click', () => {
+                if (typeof fetchData === 'function') fetchData();
+            });
+        });
+    </script>
+</body>
+</html>
